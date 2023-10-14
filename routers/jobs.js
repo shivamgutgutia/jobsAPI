@@ -4,7 +4,7 @@ const jobsRouter = express.Router()
 
 jobsRouter.get("/",getJobs)
 jobsRouter.get("/:id",getJob)
-jobsRouter.post("/:id",createJob)
+jobsRouter.post("/",createJob)
 jobsRouter.patch("/:id",updateJob)
 jobsRouter.delete("/:id",deleteJob)
 
