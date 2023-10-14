@@ -7,11 +7,12 @@ const errorHandler = require("./middleware/error-handler")
 require("express-async-errors")
 const authRouter = require("./routers/auth")
 const jobsRouter = require("./routers/jobs")
+const auth = require("./middleware/auth")
 
 app.use(express.json())
 //app.use("./public")
 app.use("/api/v1/auth",authRouter)
-app.use("/api/v1/jobs",jobsRouter)
+app.use("/api/v1/jobs",auth,jobsRouter)
 app.use(notFound)
 //app.use(errorHandler)
 
