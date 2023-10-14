@@ -20,7 +20,11 @@ const createJob = async(req,res)=>{
     res.status(statusCodes.CREATED).json({job})
 }
 const updateJob = async(req,res)=>{
-    res.end("Job Updated")
+    const job = await Jobs.findOneAndUpdate({_id:req.params.id,createdBy:req.user.userId},{$set:req.body},{new:true,runValidators:true})
+    if(!job){
+        throw new NotFoundError("No job with the given ID")
+    }
+    res.status(statusCodes.OK).json({job})
 }
 const deleteJob = async(req,res)=>{
     res.end("Job deleted")

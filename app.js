@@ -14,7 +14,7 @@ app.use(express.json())
 app.use("/api/v1/auth",authRouter)
 app.use("/api/v1/jobs",auth,jobsRouter)
 app.use(notFound)
-//app.use(errorHandler)
+app.use(errorHandler)
 
 
 const port = process.env.PORT || 3000
